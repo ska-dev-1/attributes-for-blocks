@@ -1,10 +1,10 @@
 === Attributes for Blocks ===
-Contributors: websevendev, jimedwards
+Contributors: skadev, jimedwards
 Tags: gutenberg, blocks, attributes, style, aria
 Requires at least: 6.2.0
-Tested up to: 6.7.1
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.10
+Stable tag: 1.0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ You can modify which roles have the `unfiltered_html` capability using custom co
 2. Activate the plugin from **WordPress admin dashboard -> Plugins**.
 
 == Changelog ==
+
+= 1.0.11 =
+* WP 6.8.
 
 = 1.0.10 =
 * Added `afb_get_attributes` filter, allowing to dynamically modify attributes.
