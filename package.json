@@ -1,32 +1,27 @@
 {
 	"name": "attributes-for-blocks",
-	"version": "1.0.0",
-	"description": "Allows to add custom HTML attributes to Gutenberg blocks.",
-	"author": "websevendev <websevendev@gmail.com>",
-	"license": "GPL-2.0-or-later",
-	"main": "src/index.js",
 	"scripts": {
 		"start": "wp-scripts start --stats=minimal",
 		"start:hot": "wp-scripts start --hot --allowed-hosts all",
 		"build": "wp-scripts build --stats=errors-only",
 		"test": "wp-scripts test-unit-js",
 		"test:watch": "wp-scripts test-unit-js --watch",
-		"release": "pnpm run test && pnpm run build && wp dist-archive . ./attributes-for-blocks.zip"
+		"release": "pnpm run test && pnpm run build && wp-scripts plugin-zip"
 	},
 	"devDependencies": {
-		"@types/react": "^18.3.5",
-		"@wordpress/block-editor": "^14.1.0",
-		"@wordpress/blocks": "^13.6.0",
-		"@wordpress/components": "^28.6.0",
-		"@wordpress/compose": "^7.6.0",
-		"@wordpress/data": "^10.6.0",
-		"@wordpress/editor": "^14.6.0",
-		"@wordpress/element": "^6.6.0",
-		"@wordpress/hooks": "^4.6.0",
-		"@wordpress/i18n": "^5.6.0",
-		"@wordpress/icons": "^10.6.0",
-		"@wordpress/scripts": "^28.6.0",
+		"@types/react": "^18.3.20",
+		"@wordpress/block-editor": "^14.17.0",
+		"@wordpress/blocks": "^14.11.0",
+		"@wordpress/components": "^29.8.0",
+		"@wordpress/compose": "^7.22.0",
+		"@wordpress/data": "^10.22.0",
+		"@wordpress/editor": "^14.22.0",
+		"@wordpress/element": "^6.22.0",
+		"@wordpress/hooks": "^4.22.0",
+		"@wordpress/i18n": "^5.22.0",
+		"@wordpress/icons": "^10.22.0",
+		"@wordpress/scripts": "^30.15.0",
 		"react": "^18.3.1",
-		"style-to-object": "^1.0.7"
+		"style-to-object": "^1.0.8"
 	}
 }

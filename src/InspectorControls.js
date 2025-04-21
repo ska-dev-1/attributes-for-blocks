@@ -201,7 +201,10 @@ class InspectorControls extends Component {
 		} = this.props.attributes;
 
 		const controls = (
-			<BaseControl className='wsd-afb'>
+			<BaseControl
+				className='wsd-afb'
+				__nextHasNoMarginBottom
+			>
 				<VStack spacing={2}>
 					<form
 						className='wsd-afb-action-input'
@@ -224,6 +227,7 @@ class InspectorControls extends Component {
 								message: undefined,
 							})}
 							disabled={!this.props.canUserUseUnfilteredHTML}
+							__nextHasNoMarginBottom
 						/>
 						<Button
 							className='wsd-afb__button-add is-last'
@@ -261,6 +265,7 @@ class InspectorControls extends Component {
 										disabled={editor === 'style' || !this.props.canUserUseUnfilteredHTML}
 										value={attributesForBlocks[attribute]}
 										onChange={value => this.updateAttribute(attribute, value)}
+										__nextHasNoMarginBottom
 									/>
 									<Button
 										className='button icon-button'

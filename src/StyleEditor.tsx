@@ -125,6 +125,7 @@ const StyleEditor: React.FC<StyleEditorProps> = ({value, onChange, toggleStyleEd
 							focusElement(`.wsd-afb-style[data-index="${index}"] .components-base-control + .components-base-control input[type="text"]`, false)
 						}
 					}}
+					__nextHasNoMarginBottom
 				/>
 				<TextControl
 					placeholder={__('Value...', 'attributes-for-blocks')}
@@ -149,6 +150,7 @@ const StyleEditor: React.FC<StyleEditorProps> = ({value, onChange, toggleStyleEd
 							focusElement(`.wsd-afb-style[data-index="${index + 1}"] input[type="text"]`, addNewRow)
 						}
 					}}
+					__nextHasNoMarginBottom
 				/>
 				<div className='wsd-afb-button-group'>
 					<Button
