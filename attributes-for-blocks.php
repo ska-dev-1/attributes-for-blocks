@@ -3,7 +3,7 @@
  * Plugin Name: Attributes for Blocks
  * Plugin URI: https://wordpress.org/plugins/attributes-for-blocks
  * Description: Allows to add HTML attributes to Gutenberg blocks.
- * Version: 1.0.11
+ * Version: 1.0.12
  * Author: skadev
  * Author URI: https://profiles.wordpress.org/skadev/
  */
@@ -75,7 +75,7 @@ add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\\editor_assets', 5);
  * Should additional attributes from this plugin be applied to a block.
  *
  * @param mixed $attributes Block attributes.
- * @return boolean
+ * @return bool
  */
 function has_attributes($attributes) {
 	return is_array($attributes)
@@ -98,6 +98,9 @@ function merge_attributes($attribute, $current, $add) {
 	/** Clean attribute. */
 	switch($attribute) {
 		case 'style':
+			if($current === $add) {
+				break;
+			}
 			/** Ensure style applied via JS matches input style.  */
 			$add = str_replace(': ', ':', $add);
 			$add = str_replace('; ', ';', $add);
@@ -129,6 +132,7 @@ function merge_attributes($attribute, $current, $add) {
 			}
 		break;
 	}
+	/** @var string */
 	$separator = apply_filters('afb_attribute_separator', $separator, $attribute);
 
 	return implode($separator, [$current, $add]);
@@ -298,16 +302,17 @@ add_filter('pre_kses', __NAMESPACE__ . '\\sanitize_attributes');
 
 
 /**
- * Add GitHub link on the plugins page.
+ * Add GitHub and Donate links on the plugins page.
  *
  * @param array $plugin_meta
  * @param string $plugin_file
  * @return array
  */
-function github_link($plugin_meta, $plugin_file) {
+function plugin_links($plugin_meta, $plugin_file) {
 	if($plugin_file === plugin_basename(WSD_AFB_FILE)) {
 		$plugin_meta[] = '<a href="https://github.com/ska-dev-1/attributes-for-blocks" target="_blank" rel="noopener noreferrer">GitHub</a>';
+		$plugin_meta[] = '<a href="https://buymeacoffee.com/skadev" target="_blank" rel="noopener noreferrer">Donate</a>';
 	}
 	return $plugin_meta;
 }
-add_filter('plugin_row_meta', __NAMESPACE__ . '\\github_link', 10, 2);
+add_filter('plugin_row_meta', __NAMESPACE__ . '\\plugin_links', 10, 2);

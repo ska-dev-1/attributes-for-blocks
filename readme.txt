@@ -1,10 +1,11 @@
 === Attributes for Blocks ===
 Contributors: skadev, jimedwards
+Donate link: https://buymeacoffee.com/skadev
 Tags: gutenberg, blocks, attributes, style, aria
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.11
+Stable tag: 1.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +76,12 @@ You can modify which roles have the `unfiltered_html` capability using custom co
 2. Activate the plugin from **WordPress admin dashboard -> Plugins**.
 
 == Changelog ==
+
+= 1.0.12 =
+* Added a donate link on the plugin page - supporters get a 50% off coupon for my brand new WordPress theme.
+* Fix potential duplication when merging style attribute values.
+* Update `@wordpress/*` packages.
+* Tested with Gutenberg 21.7.0.
 
 = 1.0.11 =
 * WP 6.8.
