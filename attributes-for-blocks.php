@@ -3,7 +3,7 @@
  * Plugin Name: Attributes for Blocks
  * Plugin URI: https://wordpress.org/plugins/attributes-for-blocks
  * Description: Allows to add HTML attributes to Gutenberg blocks.
- * Version: 1.0.12
+ * Version: 1.0.13
  * Author: skadev
  * Author URI: https://profiles.wordpress.org/skadev/
  */

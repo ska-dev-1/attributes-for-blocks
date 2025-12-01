@@ -3,9 +3,9 @@ Contributors: skadev, jimedwards
 Donate link: https://buymeacoffee.com/skadev
 Tags: gutenberg, blocks, attributes, style, aria
 Requires at least: 6.2
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.12
+Stable tag: 1.0.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,9 @@ You can modify which roles have the `unfiltered_html` capability using custom co
 2. Activate the plugin from **WordPress admin dashboard -> Plugins**.
 
 == Changelog ==
+
+= 1.0.13 =
+* Tested with WordPress 6.9.
 
 = 1.0.12 =
 * Added a donate link on the plugin page - supporters get a 50% off coupon for my brand new WordPress theme.
