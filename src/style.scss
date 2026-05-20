@@ -3,7 +3,7 @@
 .wsd-afb {
 
 	.wsd-afb-action-input {
-		$height: 32px;
+		$height: 40px;
 		$wpInputBorder: 1px solid #949494;
 		$wpInputFocusColor: var(--wp-admin-theme-color);
 		$wpButtonFocusBoxShadow: 0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
@@ -17,6 +17,10 @@
 		align-items: flex-end;
 		margin-bottom: 8px;
 		position: relative;
+
+		.button > .dashicon {
+			line-height: 1;
+		}
 
 		& > .components-base-control {
 			flex-grow: 1;
@@ -65,7 +69,6 @@
 			}
 
 			&.wsd-afb__button-add {
-
 				order: 1; // Rendered first for tabindex.
 
 				&:focus {
@@ -132,7 +135,7 @@
 		}
 
 		& > .wsd-afb-button-group {
-			$width: 34px;
+			$width: $height;
 			display: flex;
 			flex-wrap: wrap;
 			width: $width;
@@ -156,9 +159,10 @@
 				overflow: hidden !important;
 
 				& > .dashicon {
-					width: math.div($width, 2) - 3px;
-					height: math.div($height, 2) - 2px;
+					width: math.div($width, 2) - 1px;
+					height: math.div($height, 2) - 1px;
 					font-size: 14px;
+					line-height: 1.3;
 				}
 
 				&.is-top-right {
