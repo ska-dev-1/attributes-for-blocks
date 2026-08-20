@@ -1,22 +1,23 @@
-@use "sass:math";
+:root {
+	--wsd-afb-radius: 2px;
+	--wsd-afb-height: 32px;
+	--wsd-afb-input-border: 1px solid var(--wp-components-color-gray-600, var(--wpds-color-stroke-interactive-neutral, #8d8d8d));
+	--wsd-afb-action-input-padding-x: 8px;
+	--wsd-afb-action-input-padding-y: 6px;
+}
 
 .wsd-afb {
 
 	.wsd-afb-action-input {
-		$height: 40px;
-		$wpInputBorder: 1px solid #949494;
-		$wpInputFocusColor: var(--wp-admin-theme-color);
-		$wpButtonFocusBoxShadow: 0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
-		$wpButtonFocusBackgroundColor: var(--wp-admin-theme-color-darker-10);
-		$wpButtonBorderColor: var(--wp-admin-theme-color);
-		$wpButtonHoverBorderColor: var(--wp-admin-theme-color-darker-10);
-		$wpBorderRadius: 2px;
-
 		display: flex;
 		flex-direction: row;
 		align-items: flex-end;
 		margin-bottom: 8px;
 		position: relative;
+
+		&--large {
+			--wsd-afb-height: 40px;
+		}
 
 		.button > .dashicon {
 			line-height: 1;
@@ -30,8 +31,8 @@
 				margin: 0;
 
 				.components-text-control__input {
-					height: $height;
-					min-height: $height;
+					height: var(--wsd-afb-height);
+					min-height: var(--wsd-afb-height);
 					margin: 0;
 					border-right: 0;
 					border-top-right-radius: 0;
@@ -51,8 +52,8 @@
 
 		& > button {
 			display: flex;
-			height: $height;
-			min-height: $height;
+			height: var(--wsd-afb-height);
+			min-height: var(--wsd-afb-height);
 			margin: 0;
 			border-right-width: 0;
 			border-radius: 0;
@@ -60,26 +61,19 @@
 			user-select: none;
 
 			&.wsd-afb__button-help {
-				border-top: $wpInputBorder;
-				border-bottom: $wpInputBorder;
+				color: var(--wpds-color-foreground-interactive-neutral-weak, #707070);
+				border-top: var(--wsd-afb-input-border);
+				border-bottom: var(--wsd-afb-input-border);
+				border-left: 0;
 
 				&:hover {
+					color: var(--wpds-color-foreground-interactive-neutral, #1e1e1e);
 					box-shadow: none;
 				}
 			}
 
 			&.wsd-afb__button-add {
 				order: 1; // Rendered first for tabindex.
-
-				&:focus {
-					color: #fff;
-					background-color: $wpButtonFocusBackgroundColor;
-					box-shadow: $wpButtonFocusBoxShadow;
-				}
-
-				&:active {
-					color: #fff;
-				}
 			}
 
 			&.wsd-afb__button-full-screen {
@@ -88,24 +82,28 @@
 				right: 0;
 				padding: 0;
 				margin: 0;
-				width: 18px;
-				height: 18px;
+				width: 16px;
+				height: 16px;
 				min-width: initial;
 				min-height: initial;
 			}
 
-			&.icon-button {
-				padding: 6px;
+			&.wsd-afb-icon-small > svg {
+				scale: 0.7;
 			}
 
 			&.is-last {
 				border-right-width: 1px;
-				border-top-right-radius: $wpBorderRadius;
-				border-bottom-right-radius: $wpBorderRadius;
+				border-top-right-radius: var(--wsd-afb-radius);
+				border-bottom-right-radius: var(--wsd-afb-radius);
+			}
+
+			&.is-pressed {
+				color: var(--wpds-color-background-surface-neutral-strong, #fff);
 			}
 
 			&:hover ~ button {
-				border-left-color: $wpButtonHoverBorderColor;
+				border-left-color: var(--wp-admin-theme-color-darker-10);
 			}
 
 			&[disabled] {
@@ -121,56 +119,62 @@
 
 			.components-text-control__input {
 				box-shadow: none;
-				border-color: $wpInputFocusColor;
+				border-color: var(--wp-admin-theme-color);
 			}
 
-			button {
-				border-top-color: $wpInputFocusColor;
-				border-bottom-color: $wpInputFocusColor;
+			button[type=submit] + button {
+				border-top-color: var(--wp-admin-theme-color);
+				border-bottom-color: var(--wp-admin-theme-color);
+			}
 
-				&:last-child {
-					border-right-color: $wpInputFocusColor;
-				}
+			button:last-child {
+				border-right-color: var(--wp-admin-theme-color);
 			}
 		}
 
 		& > .wsd-afb-button-group {
-			$width: $height;
+			--width: var(--wsd-afb-height);
+			--height: var(--wsd-afb-height);
 			display: flex;
 			flex-wrap: wrap;
-			width: $width;
-			min-width: $width;
-			height: $height;
+			width: var(--width);
+			min-width: var(--width);
+			height: var(--wsd-afb-height);
 			margin: 0;
 			padding: 0;
 			box-shadow: none;
-			border: 1px solid $wpButtonBorderColor;
+			border: var(--wsd-afb-input-border);
 			border-radius: 0;
-			border-top-right-radius: $wpBorderRadius;
-			border-bottom-right-radius: $wpBorderRadius;
+			border-top-right-radius: var(--wsd-afb-radius);
+			border-bottom-right-radius: var(--wsd-afb-radius);
 
 			& > button {
-				width: math.div($width, 2) - 1px;
-				height: math.div($height, 2) - 1px;
+				width: calc((var(--width) / 2) - 1px);
+				height: calc((var(--height) / 2) - 1px);
+				min-width: auto;
 				min-height: auto;
 				padding: 0;
 				border: 0;
 				border-radius: 0;
-				overflow: hidden !important;
+				line-height: 1;
+				color: var(--wpds-color-foreground-interactive-neutral, #1e1e1e);
 
-				& > .dashicon {
-					width: math.div($width, 2) - 1px;
-					height: math.div($height, 2) - 1px;
-					font-size: 14px;
-					line-height: 1.3;
+				&:hover {
+					color: var(--wpds-color-foreground-interactive-neutral-active, #1e1e1e);
+				}
+
+				& > svg {
+					width: calc((var(--width) / 2) - 1px);
+					height: calc((var(--height) / 2) - 1px);
+					margin: 0;
 				}
 
 				&.is-top-right {
-					border-top-right-radius: $wpBorderRadius;
+					border-top-right-radius: var(--wsd-afb-radius);
 				}
 
 				&.is-bottom-right {
-					border-bottom-right-radius: $wpBorderRadius;
+					border-bottom-right-radius: var(--wsd-afb-radius);
 				}
 			}
 		}

@@ -15,7 +15,6 @@ import {
 	BaseControl,
 	TextControl,
 	Button,
-	Dashicon,
 	__experimentalVStack as VStack,
 	__experimentalView as View,
 	Modal,
@@ -35,6 +34,8 @@ import {
 
 import {
 	fullscreen as fullscreenIcon,
+	replace as replaceIcon,
+	close as closeIcon,
 } from '@wordpress/icons'
 
 import HelpModal from './HelpModal';
@@ -106,6 +107,8 @@ class InspectorControls extends Component {
 			return;
 		}
 
+		const key = adding.replaceAll(' ', '_')
+
 		let {setAttributes} = this.props;
 		let {attributesForBlocks} = this.props.attributes;
 
@@ -114,7 +117,7 @@ class InspectorControls extends Component {
 			return;
 		}
 
-		let normalizedKey = adding.replace('@', '');
+		let normalizedKey = key.replace('@', '');
 		if(normalizedKey in attributesForBlocks || '@' + normalizedKey in attributesForBlocks) {
 			this.setState({message: __('Attribute already exists', 'attributes-for-blocks')});
 			/** Focus already existing attribute. */
@@ -123,9 +126,9 @@ class InspectorControls extends Component {
 		}
 
 		let nextAttributes = Object.assign(
-			{[adding]: undefined},
+			{[key]: undefined},
 			attributesForBlocks,
-			{[adding]: ''}
+			{[key]: ''}
 		);
 
 		setAttributes({attributesForBlocks: nextAttributes});
@@ -207,12 +210,12 @@ class InspectorControls extends Component {
 			>
 				<VStack spacing={2}>
 					<form
-						className='wsd-afb-action-input'
+						className='wsd-afb-action-input wsd-afb-action-input--large'
 						onSubmit={this.addAttribute}
 					>
 						{!isFullscreen && (
 							<Button
-								className='wsd-afb__button-full-screen'
+								className='wsd-afb__button-full-screen wsd-afb-icon-small'
 								aria-label={__('Full screen', 'attributes-for-blocks')}
 								icon={fullscreenIcon}
 								onClick={() => this.setState({isFullscreen: !isFullscreen})}
@@ -268,22 +271,21 @@ class InspectorControls extends Component {
 										__nextHasNoMarginBottom
 									/>
 									<Button
-										className='button icon-button'
+										className='button icon-button wsd-afb-icon-small'
 										aria-label={__('Toggle between merge and override mode', 'attributes-for-blocks')}
+										icon={replaceIcon}
+										isPressed={isOverride}
 										aria-current={isOverride ? __('Override', 'attributes-for-blocks') : __('Merge', 'attributes-for-blocks')}
 										onClick={() => this.toggleAttributeMode(attribute)}
 										disabled={!this.props.canUserUseUnfilteredHTML}
-									>
-										<Dashicon icon='randomize' />
-									</Button>
+									/>
 									<Button
-										className='button icon-button is-last'
+										className='button icon-button wsd-afb-icon-small is-last'
 										aria-label={__('Remove attribute', 'attributes-for-blocks') + ': ' + normalizedName}
+										icon={closeIcon}
 										onClick={() => this.removeAttribute(attribute)}
 										disabled={!this.props.canUserUseUnfilteredHTML}
-									>
-										<Dashicon icon='no-alt' />
-									</Button>
+									/>
 								</div>
 								{editor === 'style' && this.props.canUserUseUnfilteredHTML && (
 									<StyleEditor

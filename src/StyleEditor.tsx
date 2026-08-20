@@ -4,12 +4,18 @@ import {__} from '@wordpress/i18n'
 import {
 	Button,
 	TextControl,
-	Dashicon,
 } from '@wordpress/components'
 
 import {
 	useState,
 } from '@wordpress/element'
+
+import {
+	chevronUp,
+	chevronDown,
+	plus as plusIcon,
+	closeSmall as closeIcon,
+} from '@wordpress/icons'
 
 import parse from 'style-to-object'
 
@@ -156,6 +162,7 @@ const StyleEditor: React.FC<StyleEditorProps> = ({value, onChange, toggleStyleEd
 					<Button
 						className='button icon-button'
 						aria-label={__('Move up', 'attributes-for-blocks')}
+						icon={chevronUp}
 						disabled={isFirst}
 						onClick={() => updateStyle(
 							keys.filter(k => k !== key).reduce((acc, cur, currentIndex) => {
@@ -166,12 +173,11 @@ const StyleEditor: React.FC<StyleEditorProps> = ({value, onChange, toggleStyleEd
 								return acc
 							}, {} as Style)
 						)}
-					>
-						<Dashicon icon='arrow-up' />
-					</Button>
+					/>
 					<Button
 						className='button icon-button is-top-right'
 						aria-label={__('Remove rule', 'attributes-for-blocks')}
+						icon={closeIcon}
 						disabled={isOnly && isBlank}
 						onClick={() => {
 							const {
@@ -183,12 +189,11 @@ const StyleEditor: React.FC<StyleEditorProps> = ({value, onChange, toggleStyleEd
 								...(isOnly && {[PLACEHOLDER]: PLACEHOLDER}),
 							})
 						}}
-					>
-						<Dashicon icon='no' />
-					</Button>
+					/>
 					<Button
 						className='button icon-button'
 						aria-label={__('Move down', 'attributes-for-blocks')}
+						icon={chevronDown}
 						disabled={isLast}
 						onClick={() => updateStyle(
 							keys.filter(k => k !== key).reduce((acc, cur, currentIndex) => {
@@ -199,12 +204,11 @@ const StyleEditor: React.FC<StyleEditorProps> = ({value, onChange, toggleStyleEd
 								return acc
 							}, {} as Style)
 						)}
-					>
-						<Dashicon icon='arrow-down' />
-					</Button>
+					/>
 					<Button
 						className='button icon-button is-bottom-right'
 						aria-label={__('Add rule', 'attributes-for-blocks')}
+						icon={plusIcon}
 						disabled={key === PLACEHOLDER}
 						onClick={() => {
 							if(isLast) {
@@ -232,9 +236,7 @@ const StyleEditor: React.FC<StyleEditorProps> = ({value, onChange, toggleStyleEd
 							}
 							focusElement(`.wsd-afb-style[data-is-blank="true"] input[type="text"]`)
 						}}
-					>
-						<Dashicon icon='plus' />
-					</Button>
+					/>
 				</div>
 			</div>
 		)
